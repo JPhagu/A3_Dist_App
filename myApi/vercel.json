@@ -6,11 +6,8 @@
         "use": "@vercel/node"
       }
     ],
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "/app.js"
-      }
-    ]
+    "env": {
+      "DATABASE_URL": "postgresql://postgres:Admin@localhost:5432/greetings"
+    }
   }
   

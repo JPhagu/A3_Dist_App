@@ -1,9 +1,10 @@
-require('dotenv').config(); // Load environment variables from .env
+require('dotenv').config({ path: './postgres.env' }); // Load environment variables
+
 const { Pool } = require('pg');
 
-// Create a PostgreSQL connection pool
+// Create a PostgreSQL connection pool using the connection string from the .env file
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // Read from .env file
+  connectionString: process.env.DATABASE_URL,
   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
@@ -14,9 +15,9 @@ pool.connect((err, client, release) => {
   } else {
     console.log('Connected to PostgreSQL database.');
   }
-  release();
+  if (client) {
+    release();
+  }
 });
 
-module.exports = {
-  query: (text, params) => pool.query(text, params), // Export query function
-};
+module.exports = pool;
