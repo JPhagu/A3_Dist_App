@@ -1,13 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "app.js",
-        "use": "@vercel/node"
-      }
-    ],
-    "env": {
-      "DATABASE_URL": "postgresql://greetings_owner:DJ1zGjKE0ZFl@ep-solitary-smoke-a5l0frf5.us-east-2.aws.neon.tech/greetings?sslmode=require"
+  "version": 2,
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)", 
+      "dest": "app.js"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://greetings_owner:DJ1zGjKE0ZFl@ep-solitary-smoke-a5l0frf5.us-east-2.aws.neon.tech/greetings?sslmode=require"
   }
-  
+}
