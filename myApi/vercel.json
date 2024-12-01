@@ -7,7 +7,7 @@
       }
     ],
     "env": {
-      "DATABASE_URL": "postgresql://postgres:Admin@localhost:5432/greetings"
+      "DATABASE_URL": "postgresql://greetings_owner:DJ1zGjKE0ZFl@ep-solitary-smoke-a5l0frf5.us-east-2.aws.neon.tech/greetings?sslmode=require"
     }
   }
   
