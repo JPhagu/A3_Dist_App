@@ -8,14 +8,15 @@ const greetingRoutes = require('./routes/greeting'); // Import your greeting rou
 const { Sequelize } = require('sequelize'); // Import Sequelize
 const Greeting = require('./models/greeting'); // Import the Greeting model
 
-var sequelize = new Sequelize('greetings', 'greetings_owner', 'DJ1zGjKE0ZFl',{
-  host: 'ep-solitary-smoke-a5l0frf5.us-east-2.aws.neon.tech',
+var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+  host: process.env.DB_HOST,
   dialect: 'postgres',
   port: 5432,
-  dialectOptions:{
-  ssl: {
-    require: true,
-    rejectUnauthorized:false}
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
   },
 });
 
