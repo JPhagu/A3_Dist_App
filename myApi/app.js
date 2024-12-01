@@ -8,7 +8,7 @@ const greetingRoutes = require('./routes/greeting'); // Import your greeting rou
 const { Sequelize } = require('sequelize'); // Import Sequelize
 const Greeting = require('./models/greeting'); // Import the Greeting model
 
-var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
   dialect: 'postgres',
   port: 5432,
@@ -38,7 +38,7 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
-app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+//app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Use the greeting routes under the /api path
 app.use('/api', greetingRoutes);
