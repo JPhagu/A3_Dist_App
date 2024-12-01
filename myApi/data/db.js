@@ -1,23 +1,20 @@
-require('dotenv').config({ path: './postgres.env' }); // Load environment variables
+const { Sequelize } = require('sequelize'); // Import Sequelize
 
-const { Pool } = require('pg');
-
-// Create a PostgreSQL connection pool using the connection string from the .env file
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+var sequelize = new Sequelize('greetings', 'greetings_owner', 'DJ1zGjKE0ZFl',{
+  host: 'ep-solitary-smoke-a5l0frf5.us-east-2.aws.neon.tech',
+  dialect: 'postgres',
+  port: 5432,
+  dialectOptions:{
+  ssl: {
+    require: true,
+    rejectUnauthorized:false}
+  },
 });
 
-// Test connection
-pool.connect((err, client, release) => {
-  if (err) {
-    console.error('Error connecting to PostgreSQL:', err.stack);
-  } else {
-    console.log('Connected to PostgreSQL database.');
-  }
-  if (client) {
-    release();
-  }
+sequelize.authenticate().then(function() {
+  console.log("Connection has been established successfully.");
+}).catch(function(err){
+  console.log("Unable to connect to the database:", err);
 });
 
-module.exports = pool;
+module.exports = sequelize;

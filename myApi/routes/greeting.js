@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '.../postgres.env' });
 const express = require('express');
 const db = require('../data/db'); // Database connection
 const router = express.Router();

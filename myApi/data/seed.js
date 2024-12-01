@@ -1,4 +1,6 @@
-const db = require('./db');
+// seeds/seedGreetings.js
+const sequelize = require('../data/db'); // Import your Sequelize instance
+const greeting = require('../models/greeting'); // Import the Greeting model
 
 // Seed data with distinct formal and casual tones for each greeting
 const seedGreetings = [
@@ -27,24 +29,23 @@ const seedGreetings = [
     { timeOfDay: 'Evening', language: 'Spanish', greetingMessage: '¡Buenas Noches, cómo va todo?', tone: 'Casual' },
 ];
 
-// Insert seed data
-db.serialize(() => {
-    const stmt = db.prepare(`
-        INSERT OR IGNORE INTO Greetings (timeOfDay, language, greetingMessage, tone)
-        VALUES (?, ?, ?, ?)
-    `);
+// Function to seed data
+const seedDatabase = async () => {
+    try {
+        // Wait for the database connection to be established
+        await sequelize.authenticate();
+        console.log('Database connected successfully!');
 
-    seedGreetings.forEach((greeting) => {
-        stmt.run(greeting.timeOfDay, greeting.language, greeting.greetingMessage, greeting.tone);
-    });
+        // Use bulkCreate to insert seed data
+        await greeting.bulkCreate(seedGreetings, { ignoreDuplicates: true });
+        console.log('Database seeded successfully.');
+    } catch (err) {
+        console.error('Error seeding database:', err.message);
+    } finally {
+        // Close the database connection
+        await sequelize.close();
+    }
+};
 
-    stmt.finalize((err) => {
-        if (err) {
-            console.error('Error seeding database:', err.message);
-        } else {
-            console.log('Database seeded successfully.');
-        }
-    });
-
-    db.close();
-});
+// Execute the seeding function
+seedDatabase();
