@@ -23,19 +23,19 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   },
 });
 
-// // Test database connection and sync models
-// (async () => {
-//   try {
-//     await sequelize.authenticate();
-//     console.log('Database connected successfully!');
+// Test database connection and sync models
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Database connected successfully!');
 
-//     // Sync the Greeting model
-//     await Greeting.sync(); // This creates the table if it doesn't exist
-//     console.log('Greetings table created or already exists.');
-//   } catch (err) {
-//     console.error('Database connection error:', err);
-//   }
-// })();
+    // Sync the Greeting model
+    await Greeting.sync(); // This creates the table if it doesn't exist
+    console.log('Greetings table created or already exists.');
+  } catch (err) {
+    console.error('Database connection error:', err);
+  }
+})();
 
 const app = express();
 
