@@ -44,4 +44,4 @@ app.use(express.json()); // Parse JSON request bodies
 app.use('/api', greetingRoutes);
 
 // Export the app for Vercel
-module.exports = sequelize;
+module.exports = app;
