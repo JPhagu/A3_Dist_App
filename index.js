@@ -44,7 +44,7 @@ app.use(express.json()); // Parse JSON request bodies
 //app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Use the greeting routes under the /api path
-// app.use('/api', greetingRoutes);
+app.use('/api', greetingRoutes);
 // app.listen(PORT, () => {
 //   console.log(`Server running on http://localhost:${PORT}`);
 // });
