@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 const greetingRoutes = require('./routes/greeting'); // Import your greeting routes
 const { Sequelize } = require('sequelize'); // Import Sequelize
 const Greeting = require('./models/greeting'); // Import the Greeting model
-const PORT = 5000;
+//const PORT = 5000;
+
+const isProduction = process.env.NODE_ENV === 'production'
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
   host: process.env.DB_HOST,
   dialect: 'postgres',
@@ -41,9 +43,9 @@ app.use(express.json()); // Parse JSON request bodies
 //app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 // Use the greeting routes under the /api path
-app.use('/api', greetingRoutes);
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// app.use('/api', greetingRoutes);
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
 // Export the app for Vercel
 //module.exports = app;
