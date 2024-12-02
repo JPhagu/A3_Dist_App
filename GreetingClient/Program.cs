@@ -9,6 +9,7 @@ namespace GreetingClient
     class Program{
         private static readonly HttpClient client = new HttpClient();
         private const string BaseUrl = "https://a3-dist-app.vercel.app/api/";
+        //private const string BaseUrl = "http://localhost:5000/api/";
 
 
         static async Task Main(string[] args){
