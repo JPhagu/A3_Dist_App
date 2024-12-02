@@ -1,8 +1,8 @@
 require('dotenv').config({ path: '../postgres.env' });
 require('pg');
 const express = require('express');
-const greeting = require('../models/greeting'); // Import the Greeting model with lowercase 'g'
-const sequelize = require('../data/db'); // Import your Sequelize instance
+const greeting = require('./models/greeting'); // Import the Greeting model with lowercase 'g'
+const sequelize = require('./data/db'); // Import your Sequelize instance
 const router = express.Router();
 
 // POST route to fetch a greeting based on timeOfDay, language, and tone
