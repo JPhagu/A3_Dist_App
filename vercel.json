@@ -12,6 +12,7 @@
       "dest": "index.js"  
     }
   ],
+  "buildCommand": "npm install",
   "env": {
     "DB_NAME": "greetings",
     "DB_USER": "greetings_owner",
