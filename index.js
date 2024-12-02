@@ -49,4 +49,4 @@ app.use(express.json()); // Parse JSON request bodies
 //   console.log(`Server running on http://localhost:${PORT}`);
 // });
 // Export the app for Vercel
-//module.exports = app;
+module.exports = app;
