@@ -4,12 +4,15 @@
 API Base URL
 The base URL for the API is:
 
-https://a3-dist-app.vercel.app
+https://a3-dist-app.vercel.app/api
 
 GitHub Repo Link:
 https://github.com/JPhagu/A3_Dist_App/invitations
 # Setup
-
+Navigate to the GreetingClient Folder
+```
+cd ./GreetingClient/
+```
 to run the client:
 ```
 dotnet run

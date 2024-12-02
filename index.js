@@ -5,7 +5,7 @@ require('dotenv').config({ path: './postgres.env' }); // Load environment variab
 require('pg');
 const express = require('express');
 const bodyParser = require('body-parser');
-const greetingRoutes = require('./greeting'); // Import your greeting routes
+const greetingRoutes = require('./routes/greeting'); // Import your greeting routes
 const { Sequelize } = require('sequelize'); // Import Sequelize
 const Greeting = require('./models/greeting'); // Import the Greeting model
 //const PORT = 5000;
@@ -41,12 +41,10 @@ const app = express();
 
 // Middleware
 app.use(express.json()); // Parse JSON request bodies
-//app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+
 
 // Use the greeting routes under the /api path
 app.use('/api', greetingRoutes);
-// app.listen(PORT, () => {
-//   console.log(`Server running on http://localhost:${PORT}`);
-// });
+
 // Export the app for Vercel
 module.exports = app;
