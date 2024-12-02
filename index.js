@@ -2,6 +2,7 @@
 // Email:          jphagu1941@conestogac.on.ca
 // Student Number: 8761941
 require('dotenv').config({ path: './postgres.env' }); // Load environment variables
+require('pg');
 const express = require('express');
 const bodyParser = require('body-parser');
 const greetingRoutes = require('./routes/greeting'); // Import your greeting routes
